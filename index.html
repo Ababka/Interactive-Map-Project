@@ -9,16 +9,29 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="index.js"></script>
     <style>
+        * { margin: 0; padding: 0;}
         body { background-color: #1B91CC;}
-        #section { display: flex; justify-content: center;}
+        #container { display: flex; flex-direction: column; align-items: center; padding-top: 50px;}
         #map { height: 500px; width: 700px; background-color: black;}
         /* background color is place holder for map */
+        #buttons { text-align: center; font-weight: bold;} 
     </style>
 </head>
 <body>
-    <div id="section">
+    <div id="container">
         <div id="map">
-            </div>
+        </div>
+        <div id="buttons">
+            <form>
+                <p>Where would you like to go?</p>
+                <select id="businesses">
+                    <option value="restaurant">Restaurants</option>
+                    <option value="coffee">Coffee Shops</option>
+                    <option value="hotel">Hotels</option>
+                    <option value="market">Markets</option>
+                </select>
+                <button id="submit">Submit</button>
+            </form>
         </div>
     </div>
 </body>
