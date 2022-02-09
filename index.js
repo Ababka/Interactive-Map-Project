@@ -21,7 +21,7 @@ function onLocationFound(e) {
   var radius = e.accuracy;
 
   L.marker(e.latlng).addTo(map)
-      .bindPopup("You are within " + radius + " meters from this point").openPopup();
+      .bindPopup("You are Here " + "<br>" +  "within " + radius.toFixed(2) + " meters").openPopup();
 
   L.circle(e.latlng, radius).addTo(map);
 }
@@ -30,4 +30,37 @@ map.on('locationfound', onLocationFound);
 
 }
 
-// need to work on locating businesses
+const options = {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    Authorization: 'fsq37wfg+kIuLpIErPuJ+Am2iTFjQdiVZlYSeSrcqPMz+k8='
+  }
+};
+
+fetch('https://api.foursquare.com/v3/places/search?ll=34.2622%2C-118.4989&chains=restaurants%2C%20coffe%20shops%2C%20hotels%2C%20markets&limit=5', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
+
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     Accept: 'application/json',
+//     Authorization: 'fsq37wfg+kIuLpIErPuJ+Am2iTFjQdiVZlYSeSrcqPMz+k8='
+//   }
+// };
+
+// fetch('https://api.foursquare.com/v3/places/nearby?ll=41.8781%2C-87.6298&query=Restaurants%2C%20Coffee%20shops%2C%20Hotels%2C%20Markets&limit=5', options)
+//   .then(response => response.json())
+//   .then(response => console.log(response))
+//   .catch(err => console.error(err));
+
+
+
+// todo -
+//connect foursquare - not recieving any arrays with specified LL string
+//get info on selected businesses
+//create array
+//add markers for said businesses
+//dropdown above the map that lists the 5 businesses
